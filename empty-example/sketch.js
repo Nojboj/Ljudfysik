@@ -10,7 +10,7 @@ function setup() {
   // By default, it does not .connect() (to the computer speakers)
   mic.start();
 }
-
+//wtf the dog doin tho
 function draw() {
   background(200);
 
