@@ -11,6 +11,7 @@ function setup() {
   mic.start();
 }
 //wtf the dog doin tho
+//he eatin
 function draw() {
   background(200);
 
