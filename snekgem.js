@@ -1,12 +1,12 @@
 let mic, fft;
-let soundCounter = 10;
+let soundCounter = 1;
 var counterD5 = 0;
 var counterE5 = 0;
 var counterG5 = 0;
 var counterA5 = 0;
 
 // the snake is dividedoi into small segments, which are drawn and edited on each 'draw' call
-let numSegments = 10;
+let numSegments = 5;
 let direction = 'right';
 
 const xStart = 0; //starting x coordinate for snake
@@ -26,8 +26,8 @@ function setup() {
   scoreElem.id = 'score';
   scoreElem.style('color', 'white');
 
-  createCanvas(500, 500);
-  frameRate(15);
+  createCanvas(400, 400);
+  frameRate(10);
   stroke(255);
   strokeWeight(10);
   updateFruitCoordinates();
@@ -208,82 +208,62 @@ function updateFruitCoordinates() {
   yFruit = floor(random(10, (height - 100) / 10)) * 10;
 }
 
-function keyPressed() {
-  switch (keyCode) {
-    case 74:
-      if (direction !== 'right') {
-        direction = 'left';
-      }
-      break;
-    case 76:
-      if (direction !== 'left') {
-        direction = 'right';
-      }
-      break;
-    case 73:
-      if (direction !== 'down') {
-        direction = 'up';
-      }
-      break;
-    case 75:
-      if (direction !== 'up') {
-        direction = 'down';
-      }
-      break;
-  }
-}
-
 function snekKeyboard(highestFreq) {
 
   
   let event = new Event('keydown');
-  if(highestFreq > 550 && highestFreq < 615) { //if playing a D5 or D#5
+  if((highestFreq > 550 && highestFreq < 615) || (highestFreq > 1140 && highestFreq < 1170)) { //if playing a D5 or D#5
     counterD5++;
     counterE5 = 0;
     counterG5 = 0;
     counterA5 = 0;
    
     if(counterD5 == soundCounter){  
-      console.log('d -> turn left'); 
-      event.code = 74;   
-      window.dispatchEvent(event);
+      console.log('d -> turn down');    
+      if (direction !== 'up') {
+        direction = 'down';
+      }
     }
 
-  } else if(highestFreq > 615 && highestFreq < 685) { //if playing a E5 or E#5 
+  } else if((highestFreq > 615 && highestFreq < 685) || (highestFreq > 1280 && highestFreq < 1320)) { //if playing a E5 or E#5 
     counterD5 = 0;
     counterE5++;
     counterG5 = 0;
     counterA5 = 0;
 
-    if(counterE5 == soundCounter){  
-      console.log('e -> turn right');       
-      event.code = 76;   
-      window.dispatchEvent(event);
+    if(counterE5 == soundCounter){ 
+      
+      console.log('e -> turn left'); 
+      if (direction !== 'right') {
+        direction = 'left';
+      }
     }
 
-  } else if(highestFreq > 685 && highestFreq < 800) { //if playing a G5 or G#5
+  } else if((highestFreq > 685 && highestFreq < 800) || (highestFreq > 1540 && highestFreq < 1580)) { //if playing a G5 or G#5
     counterD5 = 0;
     counterE5 = 0;
     counterG5++;
     counterA5 = 0;
     
     if(counterG5 == soundCounter){   
-      console.log('g -> turn up');     
-      event.code = 73;   
-      window.dispatchEvent(event);
+      console.log('g -> turn up');    
+      if (direction !== 'down') {
+        direction = 'up';
+      }
     }
 
-  } else if(highestFreq > 800 && highestFreq < 920) { //if playing a A5 or A#5
+  } else if((highestFreq > 800 && highestFreq < 920) || (highestFreq > 1700 && highestFreq < 1760)) { //if playing a A5 or A#5
     counterD5 = 0;
     counterE5 = 0;
     counterG5 = 0;
     counterA5++;
     
     if(counterA5 == soundCounter){   
-      console.log('a -> turn down');    
-      event.code = 75;   
-      window.dispatchEvent(event);
-      
+
+      console.log('a -> turn right');       
+      if (direction !== 'left') {
+        direction = 'right';
+      }     
     }
   }
   
