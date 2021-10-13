@@ -208,11 +208,10 @@ function updateFruitCoordinates() {
   yFruit = floor(random(10, (height - 100) / 10)) * 10;
 }
 
-function snekKeyboard(highestFreq) {
+function snekKeyboard(loudestFreq) {
 
   
-  let event = new Event('keydown');
-  if((highestFreq > 550 && highestFreq < 615) || (highestFreq > 1140 && highestFreq < 1170)) { //if playing a D5 or D#5
+  if((loudestFreq > 550 && loudestFreq < 615) || (loudestFreq > 1140 && loudestFreq < 1170)) { //if playing a D5 or D#5
     counterD5++;
     counterE5 = 0;
     counterG5 = 0;
@@ -225,7 +224,7 @@ function snekKeyboard(highestFreq) {
       }
     }
 
-  } else if((highestFreq > 615 && highestFreq < 685) || (highestFreq > 1280 && highestFreq < 1320)) { //if playing a E5 or E#5 
+  } else if((loudestFreq > 615 && loudestFreq < 685) || (loudestFreq > 1280 && loudestFreq < 1320)) { //if playing a E5 or E#5 
     counterD5 = 0;
     counterE5++;
     counterG5 = 0;
@@ -239,7 +238,7 @@ function snekKeyboard(highestFreq) {
       }
     }
 
-  } else if((highestFreq > 685 && highestFreq < 800) || (highestFreq > 1540 && highestFreq < 1580)) { //if playing a G5 or G#5
+  } else if((loudestFreq > 685 && loudestFreq < 800) || (loudestFreq > 1540 && loudestFreq < 1580)) { //if playing a G5 or G#5
     counterD5 = 0;
     counterE5 = 0;
     counterG5++;
@@ -252,7 +251,7 @@ function snekKeyboard(highestFreq) {
       }
     }
 
-  } else if((highestFreq > 800 && highestFreq < 920) || (highestFreq > 1700 && highestFreq < 1760)) { //if playing a A5 or A#5
+  } else if((loudestFreq > 800 && loudestFreq < 920) || (loudestFreq > 1700 && loudestFreq < 1760)) { //if playing a A5 or A#5
     counterD5 = 0;
     counterE5 = 0;
     counterG5 = 0;
